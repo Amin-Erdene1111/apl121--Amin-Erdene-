@@ -1,0 +1,74 @@
+<?xml version="1.0"?>
+<flowgorithm fileversion="4.2">
+    <attributes>
+        <attribute name="name" value="Mashinii yavah huvaari" />
+        <attribute name="authors" value="Batorgil" />
+        <attribute name="about" value="" />
+    </attributes>
+    <function name="Main" type="None" variable="">
+        <parameters />
+        <body>
+            <declare name="d, g, i, m, dugaar, udur, ih, ihMashin" type="Integer" array="False" size="" />
+
+            <output expression="&quot;Mashinii suuliin oron (0-9): &quot;" newline="False" />
+            <input variable="d" />
+
+            <output expression="&quot;Unuudriin garag (1-7): &quot;" newline="False" />
+            <input variable="g" />
+
+            <if expression="d % 2 = g % 2">
+                <then>
+                    <output expression="&quot;Unuudur yavj BOLNO&quot;" newline="True" />
+                </then>
+                <else>
+                    <output expression="&quot;Unuudur yavj BOLOHGUI&quot;" newline="True" />
+                </else>
+            </if>
+
+            <output expression="&quot;Garag  Tuluv&quot;" newline="True" />
+            <for variable="i" start="1" end="7" direction="inc" step="1">
+                <if expression="d % 2 = i % 2">
+                    <then>
+                        <output expression="i &amp; &quot;  Bolno&quot;" newline="True" />
+                    </then>
+                    <else>
+                        <output expression="i &amp; &quot;  Horiotoi&quot;" newline="True" />
+                    </else>
+                </if>
+            </for>
+
+            <assign variable="ih" expression="0" />
+            <assign variable="ihMashin" expression="0" />
+
+            <output expression="&quot;--- Geriin 3 mashin ---&quot;" newline="True" />
+            <for variable="m" start="1" end="3" direction="inc" step="1">
+                <output expression="m &amp; &quot;-r mashinii suuliin oron: &quot;" newline="False" />
+                <input variable="dugaar" />
+
+                <assign variable="udur" expression="0" />
+                <for variable="i" start="1" end="7" direction="inc" step="1">
+                    <if expression="dugaar % 2 = i % 2">
+                        <then>
+                            <assign variable="udur" expression="udur + 1" />
+                        </then>
+                        <else>
+                        </else>
+                    </if>
+                </for>
+
+                <output expression="&quot;Mashin &quot; &amp; m &amp; &quot;: 7 honogt &quot; &amp; udur &amp; &quot; udur yavna&quot;" newline="True" />
+
+                <if expression="udur &gt; ih">
+                    <then>
+                        <assign variable="ih" expression="udur" />
+                        <assign variable="ihMashin" expression="m" />
+                    </then>
+                    <else>
+                    </else>
+                </if>
+            </for>
+
+            <output expression="&quot;Hamgiin olon udur yavah: &quot; &amp; ihMashin &amp; &quot;-r mashin (&quot; &amp; ih &amp; &quot; udur)&quot;" newline="True" />
+        </body>
+    </function>
+</flowgorithm>
